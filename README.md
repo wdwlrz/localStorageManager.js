@@ -1,6 +1,6 @@
 # localStorageManager.js
 
-自动维护localStorage,可在vue中响应，实时更新数据到js对象里。
+自动维护localStorage，可在vue中响应，实时更新数据到js对象里。
 
 Automatically maintain localstorage, listen in Vue and update data to JS object in real time.
 
