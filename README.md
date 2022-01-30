@@ -29,6 +29,6 @@ let app=new Vue({
   
     storageData:ls.data   // when you changed localStorage, ls.data has been changed, {{storageData.name}} has been changed too.
     
-  }
+    }
   
 })
