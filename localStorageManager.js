@@ -1,3 +1,5 @@
+// 作者：jamy
+// 博客：www.imjamy.com
 
 // 注意 JSON.parse() 无法解析json5格式的对象
 
