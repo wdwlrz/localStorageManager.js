@@ -8,7 +8,9 @@ demo:
 
 let ls = new localStorageManager();
 
-ls.data; // data in localStorage
+ls.data; // data in localStorage, values after format
+
+ls.originData; // data in localStorage, values are strings
 
 ls.set(key,value); // localStorage.setItem();  value can be an Object or Array
 
