@@ -8,7 +8,7 @@ demo:
 
 let ls = new localStorageManager();
 
-ls.data; // data in localStorage, values after format
+ls.data; // data in localStorage,auto update, values after format
 
 ls.originData; // data in localStorage, values are strings
 
@@ -20,7 +20,7 @@ ls.del(key); // localStorage.removeItem();
 
 ls.clear(); // localStorage.clear();
 
-ls.initData(force=false); // update ls.data
+ls.initData(force=false); // manual update ls.data
 
 
 let app=new Vue({
