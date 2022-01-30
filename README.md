@@ -22,8 +22,13 @@ ls.initData(force=false); // update ls.data
 
 
 let app=new Vue({
+
   el:'#app',
+  
   data:{
+  
     storageData:ls.data   // when you changed localStorage, ls.data has been changed, {{storageData.name}} has been changed too.
+    
   }
+  
 })
