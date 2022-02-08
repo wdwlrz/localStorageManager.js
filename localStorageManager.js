@@ -2,6 +2,7 @@
 // 博客：www.imjamy.com
 
 
+
 // 注意 JSON.parse() 无法解析json5格式的对象
 
 
@@ -125,7 +126,7 @@ var localStorageManager = function () {
 
 
     /****** 对象共有方法 ******/
-    this.set = function (key,value,options={}){
+    this.set = function (key,value){
         if (value==undefined){
             console.log("error: 'value'不能为空");
             return false;
@@ -232,4 +233,3 @@ var localStorageManager = function () {
     }
 
 };
-
