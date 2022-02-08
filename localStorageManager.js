@@ -1,13 +1,14 @@
 // 作者：jamy
 // 博客：www.imjamy.com
 
+
 // 注意 JSON.parse() 无法解析json5格式的对象
 
 
 var localStorageManager = function () {
 
     /****** 私有属性 ******/
-    let that = this;
+    let that = this; // that被赋值为当前对象this，这样私有方法就可以通过that访问共有属性和方法了。
 
     /****** 对象共有属性 ******/
     this.data={};
@@ -15,7 +16,10 @@ var localStorageManager = function () {
 
     /****** 私有方法 ******/
     let matchOptions = function(value){
-        let options={isObject:false,isArray:false,split:''};
+        let options={isObject:false,isArray:false};
+        if (!value){
+            return options;
+        }
         if (value.constructor === String) {
             try{
                 value=JSON.parse(value);
@@ -121,7 +125,7 @@ var localStorageManager = function () {
 
 
     /****** 对象共有方法 ******/
-    this.set = function (key,value,options={split:''}){
+    this.set = function (key,value,options={}){
         if (value==undefined){
             console.log("error: 'value'不能为空");
             return false;
@@ -132,7 +136,6 @@ var localStorageManager = function () {
             options:{
                 isObject:false,
                 isArray:false,
-                split:options.split
             }
         };
         if (value.constructor == Object){
@@ -143,15 +146,13 @@ var localStorageManager = function () {
             value=JSON.stringify(value);
             item.options.isArray=true;
         }
-        if (options.split!=''){
-            item.value=value.split(options.split);
-        }
-        localStorage.setItem(key,value); // 会派发事件调用updateStorageList
+
+        localStorage.setItem(key,value); // 会派发事件调用updateStorageList，这里的判断value类型好像多余了，setItem里也会判断
         return true;
     };
 
     this.get = function (key,needParse_or_Options){
-        let options={isObject:false,split:''};
+        let options={isObject:false,isArray:false};
         let value=localStorage.getItem(key);
         if (needParse_or_Options==undefined){
             let storageList=JSON.parse(localStorage.getItem('storageList'));
@@ -171,9 +172,6 @@ var localStorageManager = function () {
             }catch (e) {
                 value=undefined;
             }
-        }
-        if (options.split!=''){
-            value=value.split(options.split);
         }
 
         return value;
@@ -234,3 +232,4 @@ var localStorageManager = function () {
     }
 
 };
+
